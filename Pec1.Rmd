@@ -1,0 +1,310 @@
+---
+title: "Pec1"
+author: "Lidya"
+date: "9/11/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Ejercicio 1
+
+
+a) Las probabilidades de una variable discreta X estan representadas mediante
+uno de los siguientes graficos:
+
+```{r warning=TRUE, message=TRUE}
+# la suma de una funcion de distribucion debe ser 1
+x1<-0:9
+px1<-c(0.1,0,0.15,0,0.20,0,0.25,0.15,0,0.05)
+px1<-as.numeric(px1)
+sum(px1)
+
+```
+Se descarta el grafico A, la suma no es 1. no cumple con el requisito primordial de funcion de distribucion.
+
+```{r warning=TRUE, message=TRUE}
+# la suma de una funcion de distribucion debe ser 1
+x2<-0:9
+px2<-c(0.1,0,0.15,0,0.20,0,0.25,0.20,0,0.1)
+px2<-as.numeric(px2)
+sum(px2)
+Distfuncion<-data.frame(x2,px2)
+Distfuncion
+```
+Es decir, se selecciona B 
+
+
+P(X=6)=
+```{r warning=TRUE, message=TRUE}
+
+Distfuncion$px2[Distfuncion$x2==6]
+
+```
+
+P(X>=4)=
+```{r warning=TRUE, message=TRUE}
+
+Pm4<-1-(Distfuncion$px2[Distfuncion$x2==0] +Distfuncion$px2[Distfuncion$x2==1] +Distfuncion$px2[Distfuncion$x2==2] + Distfuncion$px2[Distfuncion$x2==3])
+
+Pm4
+```
+P(X=6 / x>=4)=
+```{r warning=TRUE, message=TRUE}
+
+Distfuncion$px2[Distfuncion$x2==6]/Pm4
+
+```
+
+b) Uno de los siguientes gráficos representa la función de distribución de una
+variable continua Y :
+
+LA suma acumulada debe ser máximo 1, no puede dar una probabilidad por arriba de 1. Es decir se selecciona A
+
+
+
+```{r warning=TRUE, message=TRUE}
+# la suma de una funcion de distribucion debe ser 1
+yA<-c(0,10,20,25,50)
+pyA<-c(0.3,0.5,0.7,0.8,1)
+pyA<-as.numeric(px2)
+DistfuncionA<-data.frame(yA,pyA)
+DistfuncionA
+```
+
+a) P(y=0)
+
+La probabilidad puntual de una variable aleatoria continua es cero
+
+b) P(y<25)
+
+```{r warning=TRUE, message=TRUE}
+
+DistfuncionA$pyA[DistfuncionA$yA==25]
+
+```
+
+c) P(10<y<25)
+
+```{r warning=TRUE, message=TRUE}
+
+py10rango25=DistfuncionA$pyA[DistfuncionA$yA==25]-DistfuncionA$pyA[DistfuncionA$yA==10]
+py10rango25
+```
+
+d) P(y>10/Y<25)
+
+```{r warning=TRUE, message=TRUE}
+
+py1025=(1-DistfuncionA$pyA[DistfuncionA$yA==10])/DistfuncionA$pyA[DistfuncionA$yA==25]
+py1025
+```
+
+
+## Ejercicio 2
+
+Según La revista científica The Lancet que ha publicado un extenso estudio sobre los efectos que la distancia
+interpersonal, el uso de mascarillas y otros medios de protección contra el coronavirus se describe que la
+Probabilidad de transmisión del coronavirus en personas que no usan la mascarilla es del 17.8% y en el caso
+que la usen de del 3.1%
+
+Eventos
+I: infectados
+M:Mascarilla
+Infectado dado que usa mascarilla
+P(I/M)=0.031
+Infectado dado que no usa mascarilla
+P(I/no M)=0.178
+
+a) ¿Si el 40% de la población no lleva mascarilla? , cual es la probabilidad de
+infectarse.
+
+
+
+P(no M)=0.40
+P(M)=0.60
+
+P(I)=P(I/M)xP(M) +P(I/no M)xP(no M)=
+
+
+```{r warning=TRUE, message=TRUE}
+PIdadoM=0.031
+PIdadonoM=0.178
+PM=0.60
+PnoM=0.40
+PI=PIdadoM*PM + PIdadonoM*PnoM
+PI
+```
+
+b) ¿Si uno de los pacientes resulta infectado , cual es la probabilidad que sea de
+los que no llevaba mascarilla
+
+P(No M/I)=P(No M)x P(I/No M) / P(I/No M)xP(No M) +P(I/M)xP(M)= 
+
+```{r warning=TRUE, message=TRUE}
+PnopMdadoI= PIdadonoM*PnoM/(PIdadoM*PM + PIdadonoM*PnoM)
+PnopMdadoI
+```
+
+
+Si 15 sujetos acuden a una fiesta nocturna sin mascarilla
+
+Ahora para modelar el problema se usa una distribucion de probabilidad, en este caso, la distribucion de probabilidad binomial.
+
+n=15 y P=0.178 (Probabilidad de exito, prob de infectarse cuando no usa mascarilla)
+
+c) ¿Cuál es la probabilidad de que se contagien exactamente 50 ?
+
+La distribucion es discreta, se pueden hallar probabilidades cuando la variable aleatoria va desde 0 hasta 15 (n es igual a 15)
+Por lo tanto la probabilidad que X sea igual a 50 no existe.
+
+
+```{r warning=TRUE, message=TRUE}
+
+
+```
+
+d) ¿Cual es la probabilidad de que se contagien más de 5 pacientes?
+
+P(X>=5)=1- {P(X=0)+P(X=1)+P(X=2)+P(X=3)+P(X=4) }
+
+```{r warning=TRUE, message=TRUE}
+n=15
+P=0.178
+
+Pmas5=1-pbinom(4,n,P)
+Pmas5
+```
+la probabilidad de que se contagien más de 5 pacientes es del 11.2%
+
+Genera 1000 muestras aleatorias de 15 pacientes utilizan mascariilla y calcula el intervalo de confianza al 95%. Puedes simular los valores observados con el código siguiente para poder replicar los resultados si los ejecutas varias veces, ya que si no fijas la semilla(seed) cada vez que ejecutes los comandos te dará un resultado diferente set.seed (unnumero) #cambia "unnumero" por un número para que siempre genere la misma muestra rbinom(n, size, prob) 
+#genera n muestras de tamaño "size" con una probabilidad de éxito "prob
+
+e) Cuantos intervalos esperas que contengan y cuantos verdaderamente contienen
+el verdadero % de transmisión de coronavirus
+
+Recordemos que la probabilidad de exito P=0.031 (probabilidad de infeccion pacientes que usan mascarilla)
+n=15 (muestra)
+N=1000 (repeticiones)
+```{r warning=TRUE, message=TRUE}
+
+n=15
+P=0.031
+Es<-n*P
+Es
+set.seed(100)
+X<-rbinom(1000,n,P)
+length(X)
+contar=0
+for (i in 1:1000) {
+  intervalo<-prop.test(X[i],15)
+   if(P>intervalo$conf.int[1] & P< intervalo$conf.int[2]){
+     contar=contar+1
+     
+}
+     
+}
+
+#Se espera que el 95% de las veces este en el intervalo de confianza
+print(contar/length(X))
+#en esta simulacion esta el 98%
+
+
+
+```
+El verdadero porcentaje de transmision esta contenido en el 98% de los intervalos.
+y se esperaba un 95% de las veces que estuviera el valor real.
+
+f) Dibuja un histograma con los valores observados y superpón la curva normal
+teórica que se esperaría según el teorema central del límite.
+
+
+```{r warning=TRUE, message=TRUE}
+hist(X, probability = TRUE, main = "Histograma")
+curve(dnorm(X, mean = mean(X),sd=sd(X)), add = TRUE, col="blue", xname = "X")
+```
+
+La forma de la distribucion sin duda alguna es lejos de una normal, y tiene sentido por el numero de muestyra que es pequeño
+
+g) Si en lugar de ser la muestra de 11 fuera de 150 que esperarias que ocurriera
+con respecto a los apartados anteriores ( no es necesario que presentes los
+cálculos)
+
+
+Se espera que se aproxime a una distribucion normal.
+Que los datos se comporte en forma de campana.
+
+
+## Ejercicio 3
+
+
+El colesterol serico es un factor de riesgo importante de enfermedad coronaria. Se puede demostrar que el
+colesterol sérico sigue un a distribución normal , con media = 219mg / dL y desviación estándar = 50mg / dL.
+
+
+a) Si el rango clínicamente deseable para el colesterol es <200 mg / dL, ¿qué
+proporción de personas tienen clínicamente niveles deseables de colesterol?
+
+
+```{r warning=TRUE, message=TRUE}
+media=219
+Desviacion=50
+Pxmenor200<-(200-media)/Desviacion
+pnorm(Pxmenor200)
+
+```
+proporción de personas tienen clínicamente niveles deseables de colesterol es del 0.3519
+Es decir del 35.19%
+
+b) Algunos investigadores creen que solo el colesterol con niveles superiores a 250 mg / dL indican un riesgo suficientemente alto para justificar el tratamiento. 
+¿Qué proporción de la población representa este grupo?
+
+```{r warning=TRUE, message=TRUE}
+media=219
+Desviacion=50
+Pxmayor250<-(250-media)/Desviacion
+pnorm(Pxmayor250, lower.tail = FALSE)
+
+```
+
+c) ¿Qué proporción de la población general tiene niveles límite de colesterol alto,
+es decir,> 200 pero menors de <250 mg / dL?
+
+```{r warning=TRUE, message=TRUE}
+media=219
+Desviacion=50
+
+Px200Rango250<- pnorm(Pxmayor250)-pnorm(Pxmenor200)
+Px200Rango250
+
+```
+proporción de la población general tiene niveles límite de colesterol alto,
+es decir,> 200 pero menors de <250 mg / dL es del 0.3803
+
+d) Genera una muestra de 10 pacientes de la Estima la media de la muestra con
+su intervalo de confianza al 99%. Interpreta los resultados
+
+
+```{r warning=TRUE, message=TRUE}
+set.seed (100)
+x<-rnorm(10,mean=219, sd=50)
+intervalo99<-t.test(x, conf.level = 0.99, alternative = "two.sided")
+paste("Limite inferior es",round(intervalo99$conf.int[1],3), " y limite superior",round(intervalo99$conf.int[2],3), sep = " ") 
+
+```
+e) Replica el apartado anterior con una muestra de 20. Comenta los resultados y
+justifica las diferencias con el apartado anterior.
+
+
+```{r warning=TRUE, message=TRUE}
+set.seed (100)
+x<-rnorm(20,mean=219, sd=50)
+intervalo99<-t.test(x, conf.level = 0.99, alternative = "two.sided")
+paste("Limite inferior es",round(intervalo99$conf.int[1],3), " y limite superior",round(intervalo99$conf.int[2],3), sep = " ") 
+
+```
+
+El intervalo de confianza al aumentar la muestra se hace mas chico, es decir a medida que aumento la muestra los datos se centran un poco mas alrededor de la media.
+
