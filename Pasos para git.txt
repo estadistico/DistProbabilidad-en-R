@@ -11,3 +11,20 @@ git status # hay cambios, pilas
 git add .
 git commit -m "html proyecto"
 git log # pa ver los cambi
+
+### github -> meta llegar hasta subir algun proyecto a github
+### Comandos -> Tomar notas de todos los comandos de consola
+
+### git remote add origin https://github.com/estadistico/DistProbabilidad01.git
+git remote
+git remote -v
+git pull origin main #para traerte lo de github
+#dice que son historia diferente y tiene razon
+git pull origin main  --allow-unrelated-histories #ahora si
+#git push origin master:main
+  # se accede con el token de github
+  # para crear un token es en setting /develover setting/ tokens
+
+> Llave publica y privada
+
+
