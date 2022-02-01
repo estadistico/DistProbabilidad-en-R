@@ -1,0 +1,13 @@
+#import pandas as pd
+cd directorio actual
+code
+git init
+git status
+git add Pasos para git.txt
+git commit "version 1"
+git log # 
+#hago cambios
+git status # hay cambios, pilas
+git add .
+git commit -m "html proyecto"
+git log # pa ver los cambi
