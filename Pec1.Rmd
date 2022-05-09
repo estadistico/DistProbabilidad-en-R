@@ -1,6 +1,6 @@
 ---
-title: "Pec1"
-author: "Lidya"
+title: "ejercicios probabilidad"
+author: "tarea"
 date: "9/11/2020"
 output: word_document
 ---
@@ -58,10 +58,10 @@ Distfuncion$px2[Distfuncion$x2==6]/Pm4
 
 ```
 
-b) Uno de los siguientes gr·ficos representa la funciÛn de distribuciÛn de una
+b) Uno de los siguientes gr√°ficos representa la funci√≥n de distribuci√≥n de una
 variable continua Y :
 
-LA suma acumulada debe ser m·ximo 1, no puede dar una probabilidad por arriba de 1. Es decir se selecciona A
+LA suma acumulada debe ser m√°ximo 1, no puede dar una probabilidad por arriba de 1. Es decir se selecciona A
 
 
 
@@ -105,9 +105,9 @@ py1025
 
 ## Ejercicio 2
 
-Seg˙n La revista cientÌfica The Lancet que ha publicado un extenso estudio sobre los efectos que la distancia
-interpersonal, el uso de mascarillas y otros medios de protecciÛn contra el coronavirus se describe que la
-Probabilidad de transmisiÛn del coronavirus en personas que no usan la mascarilla es del 17.8% y en el caso
+Seg√∫n La revista cient√≠fica The Lancet que ha publicado un extenso estudio sobre los efectos que la distancia
+interpersonal, el uso de mascarillas y otros medios de protecci√≥n contra el coronavirus se describe que la
+Probabilidad de transmisi√≥n del coronavirus en personas que no usan la mascarilla es del 17.8% y en el caso
 que la usen de del 3.1%
 
 Eventos
@@ -118,7 +118,7 @@ P(I/M)=0.031
 Infectado dado que no usa mascarilla
 P(I/no M)=0.178
 
-a) øSi el 40% de la poblaciÛn no lleva mascarilla? , cual es la probabilidad de
+a) ¬øSi el 40% de la poblaci√≥n no lleva mascarilla? , cual es la probabilidad de
 infectarse.
 
 
@@ -138,7 +138,7 @@ PI=PIdadoM*PM + PIdadonoM*PnoM
 PI
 ```
 
-b) øSi uno de los pacientes resulta infectado , cual es la probabilidad que sea de
+b) ¬øSi uno de los pacientes resulta infectado , cual es la probabilidad que sea de
 los que no llevaba mascarilla
 
 P(No M/I)=P(No M)x P(I/No M) / P(I/No M)xP(No M) +P(I/M)xP(M)= 
@@ -155,7 +155,7 @@ Ahora para modelar el problema se usa una distribucion de probabilidad, en este 
 
 n=15 y P=0.178 (Probabilidad de exito, prob de infectarse cuando no usa mascarilla)
 
-c) øCu·l es la probabilidad de que se contagien exactamente 50 ?
+c) ¬øCu√°l es la probabilidad de que se contagien exactamente 50 ?
 
 La distribucion es discreta, se pueden hallar probabilidades cuando la variable aleatoria va desde 0 hasta 15 (n es igual a 15)
 Por lo tanto la probabilidad que X sea igual a 50 no existe.
@@ -166,7 +166,7 @@ Por lo tanto la probabilidad que X sea igual a 50 no existe.
 
 ```
 
-d) øCual es la probabilidad de que se contagien m·s de 5 pacientes?
+d) ¬øCual es la probabilidad de que se contagien m√°s de 5 pacientes?
 
 P(X>=5)=1- {P(X=0)+P(X=1)+P(X=2)+P(X=3)+P(X=4) }
 
@@ -177,13 +177,13 @@ P=0.178
 Pmas5=1-pbinom(4,n,P)
 Pmas5
 ```
-la probabilidad de que se contagien m·s de 5 pacientes es del 11.2%
+la probabilidad de que se contagien m√°s de 5 pacientes es del 11.2%
 
-Genera 1000 muestras aleatorias de 15 pacientes utilizan mascariilla y calcula el intervalo de confianza al 95%. Puedes simular los valores observados con el cÛdigo siguiente para poder replicar los resultados si los ejecutas varias veces, ya que si no fijas la semilla(seed) cada vez que ejecutes los comandos te dar· un resultado diferente set.seed (unnumero) #cambia "unnumero" por un n˙mero para que siempre genere la misma muestra rbinom(n, size, prob) 
-#genera n muestras de tamaÒo "size" con una probabilidad de Èxito "prob
+Genera 1000 muestras aleatorias de 15 pacientes utilizan mascariilla y calcula el intervalo de confianza al 95%. Puedes simular los valores observados con el c√≥digo siguiente para poder replicar los resultados si los ejecutas varias veces, ya que si no fijas la semilla(seed) cada vez que ejecutes los comandos te dar√° un resultado diferente set.seed (unnumero) #cambia "unnumero" por un n√∫mero para que siempre genere la misma muestra rbinom(n, size, prob) 
+#genera n muestras de tama√±o "size" con una probabilidad de √©xito "prob
 
 e) Cuantos intervalos esperas que contengan y cuantos verdaderamente contienen
-el verdadero % de transmisiÛn de coronavirus
+el verdadero % de transmisi√≥n de coronavirus
 
 Recordemos que la probabilidad de exito P=0.031 (probabilidad de infeccion pacientes que usan mascarilla)
 n=15 (muestra)
@@ -217,8 +217,8 @@ print(contar/length(X))
 El verdadero porcentaje de transmision esta contenido en el 98% de los intervalos.
 y se esperaba un 95% de las veces que estuviera el valor real.
 
-f) Dibuja un histograma con los valores observados y superpÛn la curva normal
-teÛrica que se esperarÌa seg˙n el teorema central del lÌmite.
+f) Dibuja un histograma con los valores observados y superp√≥n la curva normal
+te√≥rica que se esperar√≠a seg√∫n el teorema central del l√≠mite.
 
 
 ```{r warning=TRUE, message=TRUE}
@@ -226,11 +226,11 @@ hist(X, probability = TRUE, main = "Histograma")
 curve(dnorm(X, mean = mean(X),sd=sd(X)), add = TRUE, col="blue", xname = "X")
 ```
 
-La forma de la distribucion sin duda alguna es lejos de una normal, y tiene sentido por el numero de muestyra que es pequeÒo
+La forma de la distribucion sin duda alguna es lejos de una normal, y tiene sentido por el numero de muestyra que es peque√±o
 
 g) Si en lugar de ser la muestra de 11 fuera de 150 que esperarias que ocurriera
 con respecto a los apartados anteriores ( no es necesario que presentes los
-c·lculos)
+c√°lculos)
 
 
 Se espera que se aproxime a una distribucion normal.
@@ -241,11 +241,11 @@ Que los datos se comporte en forma de campana.
 
 
 El colesterol serico es un factor de riesgo importante de enfermedad coronaria. Se puede demostrar que el
-colesterol sÈrico sigue un a distribuciÛn normal , con media = 219mg / dL y desviaciÛn est·ndar = 50mg / dL.
+colesterol s√©rico sigue un a distribuci√≥n normal , con media = 219mg / dL y desviaci√≥n est√°ndar = 50mg / dL.
 
 
-a) Si el rango clÌnicamente deseable para el colesterol es <200 mg / dL, øquÈ
-proporciÛn de personas tienen clÌnicamente niveles deseables de colesterol?
+a) Si el rango cl√≠nicamente deseable para el colesterol es <200 mg / dL, ¬øqu√©
+proporci√≥n de personas tienen cl√≠nicamente niveles deseables de colesterol?
 
 
 ```{r warning=TRUE, message=TRUE}
@@ -255,11 +255,11 @@ Pxmenor200<-(200-media)/Desviacion
 pnorm(Pxmenor200)
 
 ```
-proporciÛn de personas tienen clÌnicamente niveles deseables de colesterol es del 0.3519
+proporci√≥n de personas tienen cl√≠nicamente niveles deseables de colesterol es del 0.3519
 Es decir del 35.19%
 
 b) Algunos investigadores creen que solo el colesterol con niveles superiores a 250 mg / dL indican un riesgo suficientemente alto para justificar el tratamiento. 
-øQuÈ proporciÛn de la poblaciÛn representa este grupo?
+¬øQu√© proporci√≥n de la poblaci√≥n representa este grupo?
 
 ```{r warning=TRUE, message=TRUE}
 media=219
@@ -269,7 +269,7 @@ pnorm(Pxmayor250, lower.tail = FALSE)
 
 ```
 
-c) øQuÈ proporciÛn de la poblaciÛn general tiene niveles lÌmite de colesterol alto,
+c) ¬øQu√© proporci√≥n de la poblaci√≥n general tiene niveles l√≠mite de colesterol alto,
 es decir,> 200 pero menors de <250 mg / dL?
 
 ```{r warning=TRUE, message=TRUE}
@@ -280,7 +280,7 @@ Px200Rango250<- pnorm(Pxmayor250)-pnorm(Pxmenor200)
 Px200Rango250
 
 ```
-proporciÛn de la poblaciÛn general tiene niveles lÌmite de colesterol alto,
+proporci√≥n de la poblaci√≥n general tiene niveles l√≠mite de colesterol alto,
 es decir,> 200 pero menors de <250 mg / dL es del 0.3803
 
 d) Genera una muestra de 10 pacientes de la Estima la media de la muestra con
